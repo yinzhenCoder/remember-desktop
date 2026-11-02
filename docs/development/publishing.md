@@ -10,6 +10,8 @@
 
 推送 v 开头的标签触发 release.yml。工作流执行测试、构建 Windows 便携目录并上传 GitHub Release。发布前应进行 Windows 实机验证。
 
+在已登录的 Git Bash 中执行 `bash scripts/release.sh`，会先同步项目、文档和 Wiki，再根据 package.json 版本创建并推送标签。已有标签不会被覆盖。Windows 工作流成功后发布便携 ZIP 和 SHA256SUMS.txt，发布说明取自 RELEASE_NOTES.md。
+
 ## GitHub Wiki
 
 执行 `npm run wiki:generate` 生成 wiki 目录。GitHub Wiki 首次需要在网页创建 Home 页，然后克隆 `https://github.com/yinzhenCoder/remember-desktop.wiki.git`，复制 wiki 目录里的 Markdown 文件并提交推送。

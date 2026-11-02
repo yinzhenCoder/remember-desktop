@@ -1,8 +1,10 @@
-# 弹幕提醒
+# <img src="assets/logo.svg" width="40" alt="" /> 弹幕提醒
 
 用桌面弹幕提醒你喝水、起身活动和上下班打卡。
 
 [文档站](https://yinzhenCoder.github.io/remember-desktop/) · [Wiki 源文件](wiki/Home.md) · [问题反馈](https://github.com/yinzhenCoder/remember-desktop/issues)
+
+Logo 源文件为 [assets/logo.svg](assets/logo.svg)，软件使用由同一矢量图导出的 PNG 和 ICO。
 
 ## 界面与操作
 
@@ -21,6 +23,12 @@
 - 本地记录与 JSON / CSV 导出。
 
 「知道了」只表示看到提醒，不表示事项已完成。软件不会自动打卡，也不检测是否喝水或起身。
+
+## 下载
+
+[下载 Windows x64 便携版](https://github.com/yinzhenCoder/remember-desktop/releases/latest/download/BarrageReminder-Windows-x64.zip) · [全部 Release](https://github.com/yinzhenCoder/remember-desktop/releases)
+
+解压完整目录后运行 `弹幕提醒.exe`，不要单独移动 EXE。发布页同时提供 SHA-256 校验文件。
 
 ## 运行
 

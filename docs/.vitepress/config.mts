@@ -5,7 +5,18 @@ export default defineConfig({
   description: "用桌面弹幕提醒你喝水、起身活动和上下班打卡。",
   base: "/remember-desktop/",
   lastUpdated: true,
+  head: [
+    [
+      "link",
+      {
+        rel: "icon",
+        type: "image/svg+xml",
+        href: "/remember-desktop/logo.svg",
+      },
+    ],
+  ],
   themeConfig: {
+    logo: "/logo.svg",
     sidebarMenuLabel: "目录",
     returnToTopLabel: "返回顶部",
     darkModeSwitchLabel: "切换深色模式",

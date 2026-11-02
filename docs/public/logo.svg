@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">弹幕提醒</title>
+  <desc id="desc">两条错开的弹幕气泡和一个提醒圆点。</desc>
+  <rect width="256" height="256" rx="52" fill="#234d3b"/>
+  <path d="M56 66h112a17 17 0 0 1 17 17v23a17 17 0 0 1-17 17H83l-23 15v-15h-4a17 17 0 0 1-17-17V83a17 17 0 0 1 17-17Z" fill="#f4f7ef"/>
+  <path d="M66 94h52m15 0h23" fill="none" stroke="#234d3b" stroke-width="8" stroke-linecap="round"/>
+  <path d="M85 151h92a14 14 0 0 1 14 14v14a14 14 0 0 1-14 14h-58l-19 12v-12H85a14 14 0 0 1-14-14v-14a14 14 0 0 1 14-14Z" fill="#b9e1bb"/>
+  <path d="M94 172h39m12 0h22M205 85h24m-20 18h12M209 167h17" fill="none" stroke="#b9e1bb" stroke-width="7" stroke-linecap="round"/>
+  <path d="M94 172h39m12 0h22" fill="none" stroke="#234d3b" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="192" cy="55" r="17" fill="#b9e1bb" stroke="#234d3b" stroke-width="5"/>
+</svg>

@@ -1,4 +1,4 @@
-const { chromium } = require("playwright");
+﻿const { chromium } = require("playwright");
 const fs = require("node:fs");
 const path = require("node:path");
 const assert = require("node:assert/strict");
@@ -64,7 +64,12 @@ async function serveBuild(context) {
     await page.locator(".entry-screen").waitFor();
     await page.keyboard.press("Escape");
     await page.locator(".entry-screen").waitFor({ state: "hidden" });
-    await page.locator(".site-button").click();
+    assert(
+      (await page.locator(".site-button").getAttribute("href")).endsWith(
+        "/releases/latest/download/BarrageReminder-Windows-x64.zip",
+      ),
+    );
+    await page.locator(".site-link").click();
     await page.locator(".vp-doc h1").waitFor();
     assert((await page.locator(".vp-doc h1").innerText()).includes("开始使用"));
     await page.locator(".vp-doc img").first().waitFor();
@@ -95,6 +100,57 @@ async function serveBuild(context) {
       path: path.join(output, "mobile.png"),
       fullPage: true,
     });
+    const darkContext = await browser.newContext({
+      viewport: { width: 1280, height: 800 },
+      colorScheme: "dark",
+      reducedMotion: "no-preference",
+    });
+    await serveBuild(darkContext);
+    const night = await darkContext.newPage();
+    await night.goto("https://barrage.local/remember-desktop/");
+    await night.locator(".entry-screen").waitFor();
+    assert(
+      await night
+        .locator("html")
+        .evaluate((element) => element.classList.contains("dark")),
+    );
+    const darkIntro = await night
+      .locator(".entry-screen")
+      .evaluate((element) => getComputedStyle(element).backgroundColor);
+    assert.equal(darkIntro, "rgb(23, 29, 25)");
+    await night.screenshot({ path: path.join(output, "intro-dark.png") });
+    await night.keyboard.press("Escape");
+    await night.locator(".entry-screen").waitFor({ state: "hidden" });
+    assert.equal(
+      await night
+        .locator(".barrage-home")
+        .evaluate((element) => getComputedStyle(element).backgroundColor),
+      darkIntro,
+    );
+    const chipBackground = await night
+      .locator(".scene-chip rect")
+      .nth(1)
+      .evaluate((element) => getComputedStyle(element).fill);
+    assert.equal(chipBackground, "rgb(34, 46, 38)");
+    await night.screenshot({ path: path.join(output, "desktop-dark.png") });
+    await night.locator(".VPSwitchAppearance:visible").click();
+    await night.waitForFunction(
+      () => !document.documentElement.classList.contains("dark"),
+    );
+    assert.equal(
+      await night
+        .locator(".barrage-home")
+        .evaluate((element) => getComputedStyle(element).backgroundColor),
+      "rgb(245, 245, 239)",
+    );
+    await night.locator(".VPSwitchAppearance:visible").click();
+    await night.locator(".site-link").click();
+    await night.locator(".vp-doc h1").waitFor();
+    assert(
+      await night
+        .locator("html")
+        .evaluate((element) => element.classList.contains("dark")),
+    );
     console.log(
       JSON.stringify({
         introDurationMs: duration,
@@ -107,6 +163,10 @@ async function serveBuild(context) {
           "no browser errors",
           "reduced motion skips intro",
           "mobile fits",
+          "dark intro and hero match",
+          "dark SVG chips",
+          "theme toggle",
+          "dark mode persists into guide",
         ],
         screenshots: output,
       }),

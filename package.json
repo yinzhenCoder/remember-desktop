@@ -1,7 +1,7 @@
 {
   "name": "remember-desktop",
   "productName": "弹幕提醒",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "用桌面弹幕提醒你喝水、起身活动和上下班打卡。",
   "author": "yinzhenCoder",
   "main": "src/main.cjs",

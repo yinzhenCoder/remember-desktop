@@ -16,10 +16,14 @@ function replay() {
           用桌面弹幕提醒你喝水、起身活动和上下班打卡。
         </p>
         <div class="hero-actions">
-          <a class="site-button" :href="withBase('/guide/getting-started')"
-            >开始使用 <span>↗</span></a
+          <a
+            class="site-button"
+            href="https://github.com/yinzhenCoder/remember-desktop/releases/latest/download/BarrageReminder-Windows-x64.zip"
+            >下载 Windows 版 <span>↓</span></a
           >
-          <a class="site-link" href="#demo">看操作演示 ↓</a>
+          <a class="site-link" :href="withBase('/guide/getting-started')"
+            >使用说明 ↗</a
+          >
         </div>
         <p class="hero-footnote">本地记录 · 可暂停 · MIT 开源</p>
       </div>
