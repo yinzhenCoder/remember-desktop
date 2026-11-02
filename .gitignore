@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.cache/
+docs/.vitepress/cache/
+docs/.vitepress/dist/
+*.log
+*.zip
+*.exe
+events.jsonl
+settings.json
+.env
+.env.*

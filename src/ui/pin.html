@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src 'none'"
+    />
+    <title>重要提醒浮条</title>
+    <link rel="stylesheet" href="pin.css" />
+  </head>
+  <body>
+    <div id="pin">
+      <span id="pin-icon"></span>
+      <div class="copy">
+        <strong id="pin-title"></strong><small>已确认看到 · 拖动可移动</small>
+      </div>
+      <button id="pin-close" aria-label="关闭浮条">×</button>
+    </div>
+    <script src="icons.js"></script>
+    <script src="pin.js"></script>
+  </body>
+</html>

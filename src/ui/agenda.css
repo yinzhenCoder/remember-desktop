@@ -1,0 +1,159 @@
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+textarea {
+  resize: vertical;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: #fff;
+  padding: 10px 13px;
+  color: var(--ink);
+  line-height: 1.7;
+}
+textarea:focus-visible {
+  outline: 3px solid #b6d0bd;
+  outline-offset: 2px;
+}
+.today-agenda {
+  margin-top: 30px;
+}
+.today-agenda .section-heading {
+  margin-bottom: 16px;
+}
+.count {
+  font-size: 11px;
+  font-weight: 500;
+  display: inline-block;
+  padding: 3px 8px;
+  margin-left: 7px;
+  background: #e8eee4;
+  border-radius: 20px;
+  color: #63806a;
+}
+.agenda-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  border: 1px solid var(--line);
+  border-top: 0;
+  background: #fff;
+  min-height: 76px;
+}
+.agenda-row:first-child {
+  border-top: 1px solid var(--line);
+  border-radius: 14px 14px 0 0;
+}
+.agenda-row:last-child {
+  border-radius: 0 0 14px 14px;
+}
+.agenda-row:only-child {
+  border-radius: 14px;
+}
+.agenda-row.first {
+  background: #f0f5eb;
+}
+.agenda-row time {
+  font-size: 16px;
+  min-width: 55px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+}
+.agenda-row .reminder-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+}
+.agenda-row svg {
+  width: 21px;
+  height: 21px;
+}
+.agenda-title {
+  flex: 1;
+  font-size: 14px;
+}
+.agenda-state {
+  font-size: 11px;
+  color: #849380;
+}
+.agenda-row.first .agenda-state {
+  color: #4f7655;
+}
+.agenda-empty {
+  padding: 50px 20px;
+  text-align: center;
+  border: 1px dashed #d3dfce;
+  border-radius: 14px;
+  background: #f1f5ed;
+  color: #657e62;
+}
+.session-actions {
+  min-width: 160px;
+}
+.session-actions .primary {
+  min-height: 44px;
+}
+.settings-block .form-row {
+  margin-top: 20px;
+}
+.settings-block .form-row label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 12px;
+}
+.speed-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px 0 12px;
+  font-size: 12px;
+}
+.speed-label output {
+  color: var(--green);
+}
+.speed-control {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--muted);
+  font-size: 12px;
+  max-width: 470px;
+  margin-bottom: 20px;
+}
+.speed-control input {
+  flex: 1;
+  accent-color: var(--green);
+  padding: 0;
+}
+dialog {
+  max-height: 90vh;
+  overflow-y: auto;
+}
+#home .quiet-note {
+  margin-top: 20px;
+}
+
+.settings-block {
+  border-radius: 8px;
+  padding: 22px;
+}
+.settings-block h2 {
+  font-size: 15px;
+}
+.settings-footer {
+  position: sticky;
+  bottom: 0;
+  background: var(--bg);
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+}
+.session-panel {
+  border-radius: 10px;
+}
+.reminder-card {
+  border-radius: 8px;
+}

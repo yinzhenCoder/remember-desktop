@@ -1,0 +1,68 @@
+{
+  "name": "remember-desktop",
+  "productName": "Remember",
+  "version": "0.4.0",
+  "description": "Windows 桌面弹幕提醒工具",
+  "author": "yinzhenCoder",
+  "main": "src/main.cjs",
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test test/*.test.cjs",
+    "test:desktop": "node test/desktop.cjs",
+    "build": "electron-builder --win nsis --x64",
+    "build:dir": "electron-builder --win --x64 --dir",
+    "build:portable": "electron-builder --win --x64 --dir",
+    "docs:dev": "vitepress docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs",
+    "wiki:generate": "node scripts/generate-wiki.mjs",
+    "format": "prettier --write src test docs scripts .github *.md *.json",
+    "format:check": "prettier --check src test docs scripts .github *.md *.json"
+  },
+  "build": {
+    "appId": "local.remember.desktop",
+    "productName": "Remember",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "src/**/*",
+      "assets/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.ico",
+      "signExecutable": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "artifactName": "Remember-Setup-${version}.${ext}"
+    }
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "7zip-bin": "^5.2.0",
+    "electron": "^45.1.0",
+    "electron-builder": "^26.18.0",
+    "jsdom": "^29.1.1",
+    "playwright": "^1.64.1",
+    "prettier": "^3.9.10",
+    "rcedit": "^5.0.2",
+    "vitepress": "^1.6.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yinzhenCoder/remember-desktop.git"
+  },
+  "homepage": "https://yinzhenCoder.github.io/remember-desktop/",
+  "engines": {
+    "node": ">=24"
+  },
+  "overrides": {
+    "vite": "6.4.4"
+  }
+}

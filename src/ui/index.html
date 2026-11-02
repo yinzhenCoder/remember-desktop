@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'"
+    />
+    <title>记得一下</title>
+    <link rel="stylesheet" href="app.css" />
+    <link rel="stylesheet" href="agenda.css" />
+  </head>
+  <body>
+    <aside class="sidebar">
+      <div class="brand">
+        <img src="../../assets/icon.png" alt="" />
+        <div>记得一下<small>REMEMBER</small></div>
+      </div>
+      <div class="nav-caption">工作安排</div>
+      <nav>
+        <button data-tab="home" class="selected">
+          <span data-icon="grid"></span>今天</button
+        ><button data-tab="reminders">
+          <span data-icon="custom"></span>提醒管理</button
+        ><button data-tab="records">
+          <span data-icon="history"></span>记录</button
+        ><button data-tab="settings">
+          <span data-icon="settings"></span>设置
+        </button>
+      </nav>
+      <div class="side-bottom">
+        <span class="local-dot"></span> 数据只保存在这台电脑<br /><small
+          >关闭窗口后，提醒在托盘继续运行</small
+        ><span class="version">0.4.0</span>
+      </div>
+    </aside>
+    <main>
+      <header>
+        <div>
+          <div class="eyebrow" id="today-date"></div>
+          <h1 id="page-title">今天的提醒</h1>
+        </div>
+        <span class="status-pill" id="status-pill">等待开启</span>
+      </header>
+      <div id="warning" class="warning" hidden></div>
+      <section id="home" class="page">
+        <div class="session-panel">
+          <div>
+            <span class="eyebrow" id="work-hours"></span>
+            <h2 id="session-title">开启今天的提醒</h2>
+            <p id="session-description">在设定时间显示桌面提醒。</p>
+          </div>
+          <div class="session-actions">
+            <button id="start-day" class="primary">开启提醒</button
+            ><button id="pause-quick" class="primary" hidden>
+              暂停 30 分钟</button
+            ><button id="resume-day" class="primary" hidden>恢复提醒</button
+            ><select id="pause-day" aria-label="更多暂停选项">
+              <option value="">更多暂停选项</option>
+              <option value="pause30">暂停 30 分钟</option>
+              <option value="pause60">暂停 1 小时</option>
+              <option value="stop">今天不再提醒</option>
+            </select>
+          </div>
+        </div>
+        <section class="today-agenda">
+          <div class="section-heading">
+            <div>
+              <h2>
+                今日待提醒 <span id="upcoming-count" class="count"></span>
+              </h2>
+              <p id="agenda-caption">按时间排列</p>
+            </div>
+            <button id="manage-reminders" class="subtle">管理提醒 ↗</button>
+          </div>
+          <div id="next-list"></div>
+        </section>
+        <div class="quiet-note">
+          确认只表示看到了。<span id="shortcut-note"></span>
+        </div>
+      </section>
+      <section id="reminders" class="page" hidden>
+        <div class="section-heading">
+          <div>
+            <h2>日常提醒</h2>
+            <p>工作时段内循环；午休期间不提醒。</p>
+          </div>
+          <button id="add-reminder" class="subtle">＋ 自定义提醒</button>
+        </div>
+        <div id="reminder-cards" class="reminder-grid"></div>
+      </section>
+      <section id="records" class="page" hidden>
+        <div class="section-heading">
+          <div>
+            <h2>提醒历史</h2>
+            <p>查看提醒时间、确认状态和导出记录。</p>
+          </div>
+        </div>
+        <div class="record-toolbar">
+          <label>从 <input id="date-from" type="date" /></label
+          ><label>到 <input id="date-to" type="date" /></label
+          ><button id="export-json" class="primary">导出 JSON</button
+          ><button id="export-csv">导出 CSV</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>提醒 / 计划时间</th>
+                <th>出现时间</th>
+                <th>回应</th>
+                <th>回应 / 结束时间</th>
+              </tr>
+            </thead>
+            <tbody id="record-rows"></tbody>
+          </table>
+        </div>
+        <p class="quiet-note" id="record-count"></p>
+      </section>
+      <section id="settings" class="page" hidden>
+        <form id="settings-form">
+          <section class="settings-block">
+            <h2>工作时间</h2>
+            <p>每段时段重新计算间隔；非工作时段不提醒喝水和久坐。</p>
+            <label class="field-label">工作日</label>
+            <div id="weekdays" class="weekdays"></div>
+            <div class="section-heading compact">
+              <label class="field-label">工作时段</label
+              ><button type="button" id="add-period" class="subtle">
+                ＋ 添加时段
+              </button>
+            </div>
+            <div id="periods"></div>
+          </section>
+          <section class="settings-block" id="barrage-settings">
+            <h2>弹幕效果</h2>
+            <p>所有提醒共用数量和轮数，每条提醒的文案可单独编辑。</p>
+            <div class="form-row">
+              <label
+                >每轮弹幕数量<select id="barrage-count">
+                  <option value="1">1 条</option>
+                  <option value="2">2 条</option>
+                  <option value="3">3 条</option>
+                  <option value="4">4 条</option>
+                  <option value="5">5 条</option>
+                  <option value="6">6 条</option>
+                  <option value="7">7 条</option>
+                </select></label
+              ><label
+                >播放轮数<select id="barrage-rounds">
+                  <option value="1">1 轮</option>
+                  <option value="2">2 轮</option>
+                </select></label
+              >
+            </div>
+            <label class="speed-label" for="barrage-speed"
+              >移动速度 <output id="speed-value">慢速</output></label
+            >
+            <div class="speed-control">
+              <span>慢</span
+              ><input
+                id="barrage-speed"
+                type="range"
+                min="100"
+                max="500"
+                step="10"
+                value="220"
+              /><span>快</span>
+            </div>
+            <label class="speed-label" for="barrage-spread"
+              >分散程度 <output id="spread-value">较分散</output></label
+            >
+            <div class="speed-control">
+              <span>集中</span
+              ><input
+                id="barrage-spread"
+                type="range"
+                min="0"
+                max="100"
+                step="10"
+                value="70"
+              /><span>分散</span>
+            </div>
+            <button type="button" id="preview-barrage">预览当前效果</button>
+            <p>
+              点击确认、关闭或等待超时后立即收起；等待时间过短时，弹幕可能提前结束。
+            </p>
+          </section>
+          <section class="settings-block" id="pin-settings">
+            <h2>重要提醒确认之后</h2>
+            <label class="check-row"
+              ><input type="checkbox" id="important-keep" /><span
+                >保留可拖动的小浮条<small
+                  >原弹幕和确认条立即关闭，浮条只作备忘，不影响确认记录。</small
+                ></span
+              ></label
+            ><label
+              >自动消失时间
+              <select id="important-seconds">
+                <option value="30">30 秒</option>
+                <option value="60">60 秒</option>
+                <option value="120">2 分钟</option>
+                <option value="180">3 分钟</option>
+                <option value="300">5 分钟</option>
+              </select></label
+            >
+            <p>浮条会逐渐淡出，也可以随时点 × 关闭。</p>
+          </section>
+          <section class="settings-block">
+            <h2>启动与提醒</h2>
+            <label class="check-row"
+              ><input type="checkbox" id="startup" /><span
+                >登录 Windows 时启动<small
+                  >启动后仍需确认开启当天的提醒。</small
+                ></span
+              ></label
+            >
+            <p>每天首次打开时确认是否开启；会议时可在首页或托盘暂停。</p>
+            <p>打卡时间单独设置，不随工作时段的修改自动变化。</p>
+          </section>
+          <div class="settings-footer">
+            <button class="primary" type="submit" id="save-settings">
+              保存工作安排</button
+            ><button type="button" id="open-data">打开数据文件夹</button>
+          </div>
+        </form>
+      </section>
+    </main>
+    <dialog id="edit-dialog">
+      <form id="edit-form">
+        <div class="dialog-heading">
+          <h2 id="edit-title">编辑提醒</h2>
+          <button type="button" id="close-edit" aria-label="关闭编辑">×</button>
+        </div>
+        <label>提醒内容<input id="edit-name" maxlength="60" required /></label>
+        <div class="form-row">
+          <label
+            >提醒方式<select id="edit-mode">
+              <option value="interval">工作时段内循环</option>
+              <option value="fixed">工作日指定时间</option>
+            </select></label
+          ><label id="interval-label"
+            >间隔（分钟）<input
+              id="edit-interval"
+              type="number"
+              min="1"
+              max="480"
+              value="30" /></label
+          ><label id="time-label" hidden
+            >提醒时间<input id="edit-time" type="time" value="09:30"
+          /></label>
+        </div>
+        <div class="form-row">
+          <label
+            >重要程度<select id="edit-importance">
+              <option value="normal">普通</option>
+              <option value="important">重要</option>
+            </select></label
+          ><label
+            >等待确认（秒）<input
+              id="edit-timeout"
+              type="number"
+              min="5"
+              max="600"
+              required
+              value="15"
+          /></label>
+        </div>
+        <label
+          >弹幕文案 <span class="muted">每行一条，可填写多条</span
+          ><textarea
+            id="edit-messages"
+            rows="4"
+            placeholder="不填则使用提醒名称"
+          ></textarea
+          ><small id="messages-hint" class="muted"></small
+        ></label>
+        <p class="muted">确认只表示注意到了。超时关闭会记为「未确认」。</p>
+        <div class="dialog-actions">
+          <button type="button" id="delete-reminder" class="danger">
+            删除提醒</button
+          ><button class="primary" type="submit">保存提醒</button>
+        </div>
+      </form>
+    </dialog>
+    <div id="toast" role="status" hidden></div>
+    <script src="icons.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
