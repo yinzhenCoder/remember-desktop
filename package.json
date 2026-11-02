@@ -1,8 +1,8 @@
 {
   "name": "remember-desktop",
-  "productName": "Remember",
-  "version": "0.4.0",
-  "description": "Windows 桌面弹幕提醒工具",
+  "productName": "弹幕提醒",
+  "version": "0.4.1",
+  "description": "用桌面弹幕提醒你喝水、起身活动和上下班打卡。",
   "author": "yinzhenCoder",
   "main": "src/main.cjs",
   "scripts": {
@@ -17,11 +17,13 @@
     "docs:preview": "vitepress preview docs",
     "wiki:generate": "node scripts/generate-wiki.mjs",
     "format": "prettier --write src test docs scripts .github *.md *.json",
-    "format:check": "prettier --check src test docs scripts .github *.md *.json"
+    "format:check": "prettier --check src test docs scripts .github *.md *.json",
+    "docs:media": "node scripts/capture-docs.cjs",
+    "docs:check": "node scripts/check-docs-site.cjs"
   },
   "build": {
     "appId": "local.remember.desktop",
-    "productName": "Remember",
+    "productName": "弹幕提醒",
     "directories": {
       "output": "dist"
     },
@@ -40,7 +42,7 @@
       "perMachine": false,
       "allowToChangeInstallationDirectory": true,
       "createDesktopShortcut": true,
-      "artifactName": "Remember-Setup-${version}.${ext}"
+      "artifactName": "BarrageReminder-Setup-${version}.${ext}"
     }
   },
   "license": "MIT",

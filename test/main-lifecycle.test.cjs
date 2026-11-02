@@ -17,6 +17,7 @@ async function createApp() {
   const handlers = new Map(),
     windows = [],
     timers = [];
+  const configuredPaths = new Map();
   class Window extends EventEmitter {
     constructor(options) {
       super();
@@ -65,7 +66,7 @@ async function createApp() {
     focus() {}
   }
   const app = new EventEmitter();
-  app.setPath = () => {};
+  app.setPath = (name, value) => configuredPaths.set(name, value);
   app.getPath = () => data;
   app.setAppUserModelId = () => {};
   app.requestSingleInstanceLock = () => true;
@@ -130,6 +131,7 @@ async function createApp() {
     return windows.filter((w) => w.query?.mode === "confirm").at(-1);
   };
   return {
+    configuredPaths,
     context,
     windows,
     timers,
@@ -139,6 +141,10 @@ async function createApp() {
     active: () => context.rememberTest.getActive(),
   };
 }
+test("renaming the product preserves the legacy Remember data directory", async () => {
+  const app = await createApp();
+  assert.equal(path.basename(app.configuredPaths.get("userData")), "Remember");
+});
 test("repeated ordinary and important previews use fresh clickable windows and acknowledge immediately", async () => {
   const a = await createApp();
   let previous;

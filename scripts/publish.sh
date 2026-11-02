@@ -17,7 +17,8 @@ if gh api "repos/$repository/pages" --silent 2>/dev/null; then
 else
   gh api "repos/$repository/pages" --method POST -f build_type=workflow --silent
 fi
-gh repo edit "$repository" --enable-wiki
+description="$(node -p 'require("./package.json").description')"
+gh repo edit "$repository" --enable-wiki --description "$description" --homepage 'https://yinzhenCoder.github.io/remember-desktop/'
 
 wiki_url="https://github.com/$repository.wiki.git"
 if git_auth ls-remote "$wiki_url" >/dev/null 2>&1; then

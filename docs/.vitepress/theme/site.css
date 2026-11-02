@@ -1,0 +1,350 @@
+:root {
+  --vp-c-brand-1: #316d58;
+  --vp-c-brand-2: #46866e;
+  --vp-c-brand-3: #316d58;
+  --vp-c-brand-soft: #e8f0e9;
+}
+.barrage-home {
+  --paper: #f5f5ef;
+  --ink: #18241f;
+  --accent: #b9e1bb;
+  --rule: #d4d9d0;
+  background: var(--paper);
+  color: var(--ink);
+}
+.site-hero {
+  max-width: 1200px;
+  min-height: calc(100svh - 64px);
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  padding: 64px 48px;
+  border-bottom: 1px solid var(--rule);
+}
+.section-index,
+.entry-index {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: #5e6e61;
+}
+.site-hero h1 {
+  font-size: clamp(64px, 8vw, 112px);
+  line-height: 1.02;
+  letter-spacing: -0.06em;
+  font-weight: 700;
+  margin: 26px 0;
+}
+.hero-period {
+  color: #316d58;
+}
+.hero-description {
+  font-size: 17px;
+  line-height: 1.9;
+  max-width: 420px;
+  text-wrap: balance;
+}
+.hero-actions {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  margin-top: 32px;
+}
+.site-button {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  background: var(--ink);
+  color: #fff !important;
+  padding: 14px 19px;
+  border-radius: 3px;
+  font-size: 14px;
+}
+.site-button:hover {
+  background: #316d58;
+}
+.site-link {
+  font-size: 13px;
+}
+.hero-footnote {
+  font-size: 12px;
+  color: #657367;
+  margin-top: 28px;
+}
+.hero-art {
+  border-block: 1px solid var(--rule);
+  padding: 22px 0 12px;
+}
+.intro-replay {
+  display: block;
+  margin: 18px 0 0 auto;
+  font-size: 12px;
+  padding: 8px;
+  color: #546b59;
+}
+.intro-replay:hover {
+  text-decoration: underline;
+}
+.barrage-scene {
+  display: block;
+  width: 100%;
+  height: auto;
+  color: #253c2e;
+  overflow: hidden;
+}
+.scene-frame {
+  fill: none;
+  stroke: #253c2e;
+  stroke-width: 2;
+}
+.scene-guide {
+  fill: none;
+  stroke: #c8d3c7;
+  stroke-width: 1;
+  stroke-dasharray: 3 9;
+}
+.scene-chip rect {
+  fill: #fff;
+  stroke: #253c2e;
+  stroke-width: 1.4;
+}
+.scene-chip rect.scene-accent {
+  fill: #b9e1bb;
+}
+.scene-chip text {
+  font-family: inherit;
+  font-size: 26px;
+  font-weight: 500;
+  fill: #253c2e;
+}
+.scene-plus {
+  fill: none;
+  stroke: #6b806c;
+  stroke-width: 1;
+}
+.is-running .scene-chip {
+  animation: entry-chip 2.65s cubic-bezier(0.2, 0.65, 0.3, 1) both;
+}
+.site-section {
+  max-width: 1104px;
+  margin: 0 auto;
+  padding: 72px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.site-section-title {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  margin-bottom: 30px;
+}
+.section-number {
+  font-size: 12px;
+  padding-top: 6px;
+  color: #69796a;
+}
+.site-section h2 {
+  font-size: 28px;
+  line-height: 1.4;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+.site-section-title p {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #657367;
+}
+.site-section > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid #d4d9d0;
+}
+.image-caption {
+  font-size: 12px;
+  line-height: 1.8;
+  color: #677769;
+  margin-top: 12px;
+}
+.site-guide-links {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 48px;
+  border-bottom: 0;
+}
+.site-guide-links > div {
+  grid-row: span 4;
+}
+.site-guide-links h2 {
+  margin-top: 12px;
+}
+.site-guide-links > a {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 15px;
+}
+.site-guide-links > a:hover {
+  color: #316d58;
+}
+.site-guide-links > a span {
+  font-size: 12px;
+  color: #657367;
+}
+.entry-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: #f5f5ef;
+  color: #18241f;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.entry-skip {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  font-size: 13px;
+  padding: 10px 12px;
+  z-index: 2;
+}
+.entry-skip span {
+  font-size: 10px;
+  border: 1px solid #c8d3c7;
+  border-radius: 3px;
+  margin-left: 12px;
+  padding: 2px 4px;
+}
+.entry-content {
+  width: min(680px, 90vw);
+}
+.entry-content > .barrage-scene {
+  max-height: 48svh;
+}
+.entry-index {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+.entry-content h1 {
+  font-size: clamp(40px, 7vw, 76px);
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  line-height: 1.1;
+  margin: 24px 0 15px;
+}
+.entry-content > p:last-child {
+  font-size: 14px;
+  line-height: 1.8;
+}
+.entry-square {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  background: #316d58;
+  margin-left: 12px;
+}
+.entry-progress {
+  position: absolute;
+  inset: auto 0 0;
+  height: 4px;
+  background: #e1e7dd;
+}
+.entry-progress span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-origin: left;
+  background: #316d58;
+  animation: entry-load 3s linear both;
+}
+.entry-leave-active {
+  transition: opacity 0.3s ease;
+}
+.entry-leave-to {
+  opacity: 0;
+}
+@keyframes entry-chip {
+  0% {
+    transform: translateX(660px);
+    opacity: 0;
+  }
+  18% {
+    opacity: 1;
+  }
+  55%,
+  78% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-80px);
+    opacity: 0;
+  }
+}
+@keyframes entry-load {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+@media (max-width: 1200px) {
+  .site-section {
+    margin-inline: 48px;
+  }
+}
+@media (max-width: 700px) {
+  .site-hero {
+    grid-template-columns: 1fr;
+    padding: 40px 24px;
+    gap: 32px;
+  }
+  .site-hero h1 {
+    font-size: 68px;
+  }
+  .hero-description {
+    font-size: 15px;
+  }
+  .hero-art {
+    max-width: 480px;
+  }
+  .site-section {
+    margin-inline: 24px;
+    padding: 42px 0;
+  }
+  .site-section h2 {
+    font-size: 23px;
+  }
+  .site-section-title {
+    gap: 15px;
+  }
+  .site-guide-links {
+    grid-template-columns: 1fr;
+  }
+  .site-guide-links > div {
+    grid-row: auto;
+    margin-bottom: 20px;
+  }
+  .entry-skip {
+    top: 12px;
+    right: 14px;
+  }
+  .entry-content > p:last-child {
+    font-size: 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .is-running .scene-chip,
+  .entry-progress span {
+    animation: none;
+  }
+  .entry-leave-active {
+    transition: none;
+  }
+}

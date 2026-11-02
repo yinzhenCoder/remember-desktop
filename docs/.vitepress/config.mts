@@ -1,11 +1,14 @@
 import { defineConfig } from "vitepress";
 export default defineConfig({
   lang: "zh-CN",
-  title: "记得一下",
-  description: "Windows 桌面弹幕提醒工具",
+  title: "弹幕提醒",
+  description: "用桌面弹幕提醒你喝水、起身活动和上下班打卡。",
   base: "/remember-desktop/",
   lastUpdated: true,
   themeConfig: {
+    sidebarMenuLabel: "目录",
+    returnToTopLabel: "返回顶部",
+    darkModeSwitchLabel: "切换深色模式",
     nav: [
       { text: "使用", link: "/guide/getting-started" },
       { text: "开发", link: "/development/architecture" },
@@ -37,7 +40,23 @@ export default defineConfig({
         link: "https://github.com/yinzhenCoder/remember-desktop",
       },
     ],
-    search: { provider: "local" },
+    search: {
+      provider: "local",
+      options: {
+        translations: {
+          button: { buttonText: "搜索", buttonAriaLabel: "搜索文档" },
+          modal: {
+            noResultsText: "没有找到结果",
+            resetButtonTitle: "清除搜索",
+            footer: {
+              selectText: "选择",
+              navigateText: "切换",
+              closeText: "关闭",
+            },
+          },
+        },
+      },
+    },
     outline: { label: "本页内容" },
     docFooter: { prev: "上一页", next: "下一页" },
     lastUpdated: { text: "更新于" },

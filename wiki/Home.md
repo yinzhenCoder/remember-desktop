@@ -1,6 +1,6 @@
-# 记得一下 Wiki
+# 弹幕提醒 Wiki
 
-Windows 桌面提醒工具。
+用桌面弹幕提醒你喝水、起身活动和上下班打卡。
 
 - [Getting-Started](Getting-Started)
 - [Reminders](Reminders)

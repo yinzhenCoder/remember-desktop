@@ -1,6 +1,12 @@
 # 数据与导出
 
+在「记录」中按日期查看回应状态，选择 JSON 或 CSV 导出。
+
+![记录列表与日期筛选、导出按钮](https://raw.githubusercontent.com/yinzhenCoder/remember-desktop/main/docs/public/images/records.png)
+
 软件不上传提醒数据。设置页可打开实际数据目录，通常在 `%APPDATA%/Remember/data`。
+
+软件更名为「弹幕提醒」后，沿用这个目录以保留旧版设置和记录；文件夹名称不随显示名称改变。
 
 - `settings.json`：配置和当天运行状态。
 - `events.jsonl`：追加式事件快照，同一 ID 的最后一行代表最新状态。

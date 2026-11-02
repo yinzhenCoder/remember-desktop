@@ -1,13 +1,29 @@
 # 开始使用
 
-便携版解压后运行 `Remember.exe`，保留同目录全部文件。源码运行执行 `npm ci`、`npm start`。
+便携版解压后运行 `弹幕提醒.exe`，保留同目录全部文件。源码运行执行 `npm ci`、`npm start`。
 
 ## 首次设置
 
 选择工作日与工作时段，例如 09:30–12:00、14:00–18:00。保存后开启当天提醒。首次配置时，打卡时间取最早开始与最晚结束时间，之后可单独编辑。
+
+![工作时间设置：工作日、上午和下午时段](https://raw.githubusercontent.com/yinzhenCoder/remember-desktop/main/docs/public/images/work-time.png)
+
+## 开启并查看今日计划
+
+首页列出还没到点的提醒。点击开启后按列表运行，需要开会时暂停。
+
+![首页：今日状态、暂停按钮和时间列表](https://raw.githubusercontent.com/yinzhenCoder/remember-desktop/main/docs/public/images/overview.png)
 
 ## 每天使用
 
 点击「开启提醒」，首页显示剩余计划。开会时暂停 30 分钟、1 小时或关闭当天提醒。关闭窗口后软件留在托盘，退出请使用托盘菜单。
 
 升级时先退出旧版。设置和历史记录保存在应用数据目录，与程序目录分开。
+
+## 提醒出现后
+
+点击底部固定位置的「知道了」确认看到。× 表示主动关闭；无操作则按等待时间自动关闭。
+
+![喝水弹幕出现后，点击知道了收起](https://raw.githubusercontent.com/yinzhenCoder/remember-desktop/main/docs/public/images/reminder-demo.gif)
+
+以上截图与动图由实际前端代码渲染，使用示例数据和模拟提醒交互，不包含个人记录，也不代表系统已检测到喝水或起身。

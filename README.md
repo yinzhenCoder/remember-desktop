@@ -1,8 +1,16 @@
-# 记得一下 · Remember
+# 弹幕提醒
 
-Windows 桌面提醒工具。按工作时间提醒喝水、起身活动和上下班打卡，支持自定义弹幕。
+用桌面弹幕提醒你喝水、起身活动和上下班打卡。
 
 [文档站](https://yinzhenCoder.github.io/remember-desktop/) · [Wiki 源文件](wiki/Home.md) · [问题反馈](https://github.com/yinzhenCoder/remember-desktop/issues)
+
+## 界面与操作
+
+![首页：开启提醒、暂停和今日计划](docs/public/images/overview.png)
+
+![弹幕出现后点击知道了关闭](docs/public/images/reminder-demo.gif)
+
+截图与动图由实际前端代码渲染，使用示例数据，不包含个人提醒记录。
 
 ## 功能
 
@@ -34,7 +42,7 @@ npm run docs:build
 npm run build:portable
 ```
 
-便携程序位于 `dist/win-unpacked/Remember.exe`，运行时需要保留整个目录。`npm run build` 生成 NSIS 安装包。Windows 发布工作流提供构建产物，仍需实机验证。
+便携程序位于 `dist/win-unpacked/弹幕提醒.exe`，运行时需要保留整个目录。`npm run build` 生成 NSIS 安装包。Windows 发布工作流提供构建产物，仍需实机验证。
 
 ## 文档
 

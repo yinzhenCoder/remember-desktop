@@ -125,7 +125,7 @@ function render(value) {
   $("reminder-cards").innerHTML = config.reminders
     .map(
       (r) =>
-        `<article class="reminder-card"><div class="card-top"><span class="reminder-icon ${r.category}">${icon(r.category)}</span><input class="switch" type="checkbox" aria-label="启用${escapeHTML(r.title)}" data-toggle="${escapeHTML(r.id)}" ${r.enabled ? "checked" : ""}></div><h3>${escapeHTML(r.title)}</h3><div class="card-timing">${r.mode === "interval" ? `每 ${r.interval} 分钟 · 工作时段内` : `${r.time} · 工作日`}</div><div class="card-footer"><span>${r.importance === "important" ? "重要 · " : ""}等待确认 ${r.timeout} 秒</span><div><button data-preview="${escapeHTML(r.id)}">预览</button> <button data-edit="${escapeHTML(r.id)}">编辑</button></div></div></article>`,
+        `<article class="reminder-card"><span class="reminder-icon ${r.category}">${icon(r.category)}</span><div class="reminder-copy"><h3>${escapeHTML(r.title)}</h3><div class="card-timing">${r.mode === "interval" ? `每 ${r.interval} 分钟 · 工作时段内` : `${r.time} · 工作日`}</div></div><span class="reminder-wait">${r.importance === "important" ? "重要 · " : ""}等待 ${r.timeout} 秒</span><div class="reminder-actions"><button data-preview="${escapeHTML(r.id)}">预览</button><button data-edit="${escapeHTML(r.id)}">编辑</button><input class="switch" type="checkbox" aria-label="启用${escapeHTML(r.title)}" data-toggle="${escapeHTML(r.id)}" ${r.enabled ? "checked" : ""}></div></article>`,
     )
     .join("");
   $("next-list").innerHTML = value.next.length

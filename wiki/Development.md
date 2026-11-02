@@ -14,3 +14,11 @@ Renderer 禁用 Node 集成并启用上下文隔离，IPC 校验来源。弹幕�
 `npm test` 包括模拟 Electron 的检查，不等于 Windows 实机验证。`npm run test:desktop` 需要能启动 Electron 调试进程的环境。测试缓存保存在 `.cache/`。
 
 需要 Node.js 24。执行 `npm run build:portable` 构建到 `dist/`，开发依赖不进入应用包。
+
+## 文档图片
+
+截图和操作演示来自实际前端代码，使用独立的示例数据与模拟 IPC，不读取个人数据。`npm run docs:media` 需要本机 Chrome，可生成截图和演示帧；再使用 Python Pillow 执行 `python scripts/encode-docs-gif.py` 编码 GIF。媒体文件提交在 `docs/public/images/`，正常文档构建不需要重录。
+
+## 首页动画
+
+自定义主题在 `docs/.vitepress/theme/`。首次进入首页时播放约 3 秒的全屏 SVG 动画，可以跳过或按 Esc 关闭，同一会话不重复播放。首页可手动重播，系统启用减少动态效果时不播放。

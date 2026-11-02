@@ -18,7 +18,8 @@ if ($LASTEXITCODE -eq 0) {
     gh api "repos/$Repository/pages" --method POST -f build_type=workflow --silent
 }
 if ($LASTEXITCODE -ne 0) { throw 'Source was pushed, but enabling GitHub Pages failed.' }
-gh repo edit $Repository --enable-wiki
+$description = (Get-Content -LiteralPath package.json -Raw -Encoding utf8 | ConvertFrom-Json).description
+gh repo edit $Repository --enable-wiki --description $description --homepage 'https://yinzhenCoder.github.io/remember-desktop/'
 if ($LASTEXITCODE -ne 0) { throw 'Could not enable the Wiki.' }
 
 $wikiUrl = "https://github.com/$Repository.wiki.git"

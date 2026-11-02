@@ -27,6 +27,7 @@ const {
 const testing = process.env.REMEMBER_TEST === "1";
 if (testing && process.env.REMEMBER_TEST_DATA)
   app.setPath("userData", process.env.REMEMBER_TEST_DATA);
+else app.setPath("userData", path.join(app.getPath("appData"), "Remember"));
 app.setAppUserModelId("local.remember.desktop");
 let store,
   mainWindow,
@@ -103,11 +104,11 @@ function updateTray() {
   if (!tray || !store) return;
   const s = state().session;
   tray.setToolTip(
-    `记得一下 · ${s.paused ? "已暂停" : s.enabled ? "今日提醒已开启" : "等待开启"}`,
+    `弹幕提醒 · ${s.paused ? "已暂停" : s.enabled ? "今日提醒已开启" : "等待开启"}`,
   );
   tray.setContextMenu(
     Menu.buildFromTemplate([
-      { label: "打开记得一下", click: showMain },
+      { label: "打开弹幕提醒", click: showMain },
       {
         label: s.enabled ? "今日提醒已开启" : "开启今天的提醒",
         enabled: !s.enabled,
@@ -407,7 +408,7 @@ async function initialize() {
     height: 790,
     minWidth: 840,
     minHeight: 640,
-    title: "记得一下",
+    title: "弹幕提醒",
     backgroundColor: "#f7f8fa",
     icon: path.join(__dirname, "../assets/icon.png"),
     show: false,
@@ -615,7 +616,7 @@ else {
     .whenReady()
     .then(initialize)
     .catch((error) => {
-      dialog.showErrorBox("记得一下启动失败", error.stack || error.message);
+      dialog.showErrorBox("弹幕提醒启动失败", error.stack || error.message);
       quitting = true;
       app.quit();
     });

@@ -18,14 +18,14 @@ jobs:
       - run: npm test
       - run: npm run build:portable
       - shell: pwsh
-        run: Compress-Archive -Path dist/win-unpacked/* -DestinationPath Remember-Windows-x64.zip
+        run: Compress-Archive -Path dist/win-unpacked/* -DestinationPath BarrageReminder-Windows-x64.zip
       - uses: actions/upload-artifact@v4
         with:
-          name: Remember-Windows-x64
-          path: Remember-Windows-x64.zip
+          name: BarrageReminder-Windows-x64
+          path: BarrageReminder-Windows-x64.zip
       - name: Upload release
         if: startsWith(github.ref, 'refs/tags/')
         env:
           GH_TOKEN: ${{ github.token }}
           RELEASE_TAG: ${{ github.ref_name }}
-        run: gh release create "$env:RELEASE_TAG" Remember-Windows-x64.zip --generate-notes
+        run: gh release create "$env:RELEASE_TAG" BarrageReminder-Windows-x64.zip --generate-notes
